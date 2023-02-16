@@ -21,6 +21,7 @@
     <!-- endinject -->
     <link rel="shortcut icon" href="favicon.png" />
     <script src="https://kit.fontawesome.com/0fdd5e9bfc.js" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>

@@ -41,12 +41,12 @@ return new class extends Migration
             $table->string('link_twitter')->nullable();
             $table->string('link_website')->nullable();
             $table->string('link_map')->nullable();
-            $table->string('logo_ponpes')->nullable();
+            $table->string('logo_ponpes')->nullable()->default('logo-pesantren/default.jpg');
             $table->string('logo_media')->nullable();
             $table->string('foto_gedung')->nullable();
             $table->string('foto_pengasuh')->nullable();
             $table->string('foto_kegiatan')->nullable();
-            $table->string('sejarah_pesantren',500)->nullable();
+            $table->string('sejarah_pesantren', 500)->nullable();
             $table->string('quote_pengasuh')->nullable();
             $table->string('link_audio_dawuh')->nullable();
             $table->string('jumlah_santri')->nullable();

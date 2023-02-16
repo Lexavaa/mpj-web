@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Crew extends Model
 {
     use HasFactory;
+    protected $table ='crews';
+    protected $guarded=['id'];
+
+    public function users(){
+        return  $this->belongsTo(User::class,'users_id');
+    }
 }

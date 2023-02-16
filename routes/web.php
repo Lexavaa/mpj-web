@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\CrewController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\NotifyListController;
+use App\Http\Controllers\RegionalController;
 use App\Http\Controllers\SomePageController;
 use App\Http\Controllers\upUserDataDashboardController;
 use App\Http\Controllers\upUserDataHomeController;
@@ -32,4 +34,6 @@ Route::post('/logout', [DashboardController::class, 'logout'])->middleware('auth
 Route::resource('/form-mpj', upUserDataHomeController::class);
 Route::patch('/upload/data/{id}', [upUserDataDashboardController::class, 'setor'])->middleware(['auth','anggota']);
 
-Route::get('/notify-list',[NotifyListController::class,'index']);
+Route::get('/notify-list',[NotifyListController::class,'index'])->middleware(['auth','admin']);
+Route::resource('/regional',RegionalController::class)->middleware(['auth','admin']);
+Route::resource('/crew',CrewController::class)->middleware(['auth']);

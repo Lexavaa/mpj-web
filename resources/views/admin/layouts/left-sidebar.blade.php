@@ -25,9 +25,15 @@
             </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="pages/documentation/documentation.html">
+            <a class="nav-link" href="/crew">
                 <i class="fa fa-users menu-icon"></i>
                 <span class="menu-title">Tambah Kru</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/regional">
+                <i class="fa fa-flag menu-icon"></i>
+                <span class="menu-title">Tambah Regional</span>
             </a>
         </li>
     </ul>
