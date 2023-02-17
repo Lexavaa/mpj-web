@@ -27,15 +27,17 @@ class CrewController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'users_id' => 'required',
             'foto_kru' => 'required|image|file|max:1000',
             'alamat_kru' => 'required',
+            'nama_kru' => 'required',
             'nomor_wa_kru' => 'required|numeric|min:12|unique:crews',
             'email_kru' => 'required|email|unique:crews',
             'jabatan_kru' => 'required',
             'keahlian_kru' => 'required',
             'status_kru' => 'required',
         ]);
+
+        $validatedData['users_id'] = auth()->user()->id;
 
         if ($request->file('foto_kru')) {
             $validatedData['foto_kru'] = $request->file('foto_kru')->store('crew-images');
@@ -48,17 +50,43 @@ class CrewController extends Controller
     public function update(Request $request, $id)
     {
         $crew = Crew::find($id);
-        $crew->update($request->except(['_token', 'submit']));
+        $rules =[
+            'users_id' => 'required',
+            'foto_kru' => 'required|image|file|max:1000',
+            'alamat_kru' => 'required',
+            'nama_kru' => 'required',
+            'nomor_wa_kru' => 'required|numeric|min:12|unique:crews',
+            'email_kru' => 'required|email|unique:crews',
+            'jabatan_kru' => 'required',
+            'keahlian_kru' => 'required',
+            'status_kru' => 'required',
+        ];
 
-        return redirect()->back()->with('success', 'Crew Ini Telah Di Update !');
+        $validatedData = $request->validate($rules);
+
+        if($request->file('image')){
+            if($request->oldImage){
+                Storage::delete($request->oldImage);
+            }
+            $validatedData['image'] = $request->file('image')->store('crew-images');
+        }
+
+        Crew::where('id', $crew->id)
+            ->update($validatedData);
+
+        return redirect()->back()->with('success','Crew Baru Telah Di Update !');
     }
 
     public function destroy($id)
     {
         $crew = Crew::find($id);
-        if (Storage::delete($crew->foto_kru)) {
+        if ($crew->foto_kru !== null) {
+            Storage::delete($crew->foto_kru);
+            $crew->delete();
+        } else {
             $crew->delete();
         }
-        return redirect()->back()->with('success', 'Rank Telah Di Hapus !');
+
+        return redirect()->back()->with('success', 'Crew Telah Di Hapus !');
     }
 }

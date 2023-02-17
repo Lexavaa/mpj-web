@@ -14,21 +14,119 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form class="p-4" method="post" action="/crew/{{ $crews->id }}">
-                        @method('patch')
-                        @csrf
-                        <div class="form-group">
-                            <label for="Nama">Regional</label>
-                            <input type="text" name="nama" class="@error('nama') is-invalid @enderror form-control"
-                                id="Nama" placeholder="Nama" value="{{ old('nama', $crews->nama) }}">
-                            @error('nama')
+                    <div class="container m-2">
+                        <form class="forms-sample" method="POST" action="/crew/{{ $crews->id }}"
+                            enctype="multipart/form-data">
+                            @method('patch')
+                            @csrf
+                            <div class="form-group">
+                                <label for="Nama Kru">Nama Kru</label>
+                                <input type="text" name="nama_kru"
+                                    class="@error('nama_kru') is-invalid @enderror form-control" id="Nama Kru"
+                                    placeholder="Nama" value="{{ old('nama_kru', $crews->nama_kru) }}">
+                                @error('nama_kru')
+                                    <div class="invalid-feedback d-flex justify-content-start">
+                                        <small>{{ $message }}</small>
+                                    </div>
+                                @enderror
+                            </div>
+                            <input style="display: none;" type="text" name="users_id"
+                                class="@error('users_id') is-invalid @enderror form-control" id="users_id"
+                                placeholder="Nama" value="{{ auth()->user()->id }}">
+                            <div class="mb-3">
+                                <label for="formFile" class="form-label @error('foto_kru') is-invalid @enderror">Upload
+                                    Gambar</label>
+                                <input type="hidden" name="oldImage" value="{{ $crews->foto_kru }}">
+                                @if ($crews->foto_kru)
+                                    <img src="{{ asset('storage/' . $crews->foto_kru) }}"
+                                        class="img-preview-edit img-fluid mb-3 col-sm-5 d-block">
+                                @else
+                                    <img class="img-preview-edit img-fluid mb-3 col-sm-5">
+                                @endif
+                                <img class="img-preview-edit img-fluid mb-3 col-sm-5">
+                                <input class="form-control" type="file" id="imageEdit" name="foto_kru"
+                                    onchange="previewImageEdit()">
+                                @error('foto_kru')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            @error('foto_kru')
                                 <div class="invalid-feedback d-flex justify-content-start">
                                     <small>{{ $message }}</small>
                                 </div>
                             @enderror
-                        </div>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
-                    </form>
+                            <div class="form-group">
+                                <label for="Alamat_kru">Alamat</label>
+                                <input type="text" name="alamat_kru"
+                                    class="@error('alamat_kru') is-invalid @enderror form-control" id="Alamat_kru"
+                                    placeholder="Alamat" value="{{ old('alamat_kru', $crews->alamat_kru) }}">
+                                @error('alamat_kru')
+                                    <div class="invalid-feedback d-flex justify-content-start">
+                                        <small>{{ $message }}</small>
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="Nomor Wa Kru">Nomor Wa</label>
+                                <input type="text" name="nomor_wa_kru"
+                                    class="@error('nomor_wa_kru') is-invalid @enderror form-control" id="No Wa Kru"
+                                    placeholder="Nama" value="{{ old('nomor_wa_kru', $crews->nomor_wa_kru) }}">
+                                @error('nomor_wa_kru')
+                                    <div class="invalid-feedback d-flex justify-content-start">
+                                        <small>{{ $message }}</small>
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="Email">Email</label>
+                                <input type="text" name="email_kru"
+                                    class="@error('email_kru') is-invalid @enderror form-control" id="Email"
+                                    placeholder="Nama" value="{{ old('email_kru', $crews->email_kru) }}">
+                                @error('email_kru')
+                                    <div class="invalid-feedback d-flex justify-content-start">
+                                        <small>{{ $message }}</small>
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="Jabatan">Jabatan</label>
+                                <input type="text" name="jabatan_kru"
+                                    class="@error('jabatan_kru') is-invalid @enderror form-control" id="Jabatan"
+                                    placeholder="Jabatan" value="{{ old('jabatan_kru', $crews->jabatan_kru) }}">
+                                @error('jabatan_kru')
+                                    <div class="invalid-feedback d-flex justify-content-start">
+                                        <small>{{ $message }}</small>
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="Keahlian_kru">Keahlian</label>
+                                <input type="text" name="keahlian_kru"
+                                    class="@error('keahlian_kru') is-invalid @enderror form-control" id="Keahlian_kru"
+                                    placeholder="Keahlian_kru" value="{{ old('keahlian_kru', $crews->keahlian_kru) }}">
+                                @error('keahlian_kru')
+                                    <div class="invalid-feedback d-flex justify-content-start">
+                                        <small>{{ $message }}</small>
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="Status Kru">Status</label>
+                                <input type="text" name="status_kru"
+                                    class="@error('status_kru') is-invalid @enderror form-control" id="Status Kru"
+                                    placeholder="Status Kru" value="{{ old('status_kru', $crews->status_kru) }}">
+                                @error('status_kru')
+                                    <div class="invalid-feedback d-flex justify-content-start">
+                                        <small>{{ $message }}</small>
+                                    </div>
+                                @enderror
+                            </div>
+                            <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                        </form>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -48,6 +146,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Author</th>
+                                    <th>Nama</th>
                                     <th>Foto</th>
                                     <th>Alamat</th>
                                     <th>Whatsapp</th>
@@ -63,6 +162,7 @@
                                     @foreach ($crew as $crews)
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $crews->users->email }}</td>
+                                        <td>{{ $crews->nama_kru }}</td>
                                         <td>
                                             <img src="{{ '/storage/' . $crews->foto_kru }}"
                                                 style="width:200px; height:140px; border-radius:0px !important; ">
@@ -101,20 +201,33 @@
                     </p>
                     <form class="forms-sample" method="POST" action="/crew" enctype="multipart/form-data">
                         @csrf
-                        <input style="display: none;" type="text" name="users_id"
-                            class="@error('users_id') is-invalid @enderror form-control" id="users_id" placeholder="Nama"
-                            value="{{ auth()->user()->id }}">
+                        <div class="form-group">
+                            <label for="Nama Kru">Nama Kru</label>
+                            <input type="text" name="nama_kru"
+                                class="@error('nama_kru') is-invalid @enderror form-control" id="Nama Kru"
+                                placeholder="Nama" value="{{ old('nama_kru') }}">
+                            @error('nama_kru')
+                                <div class="invalid-feedback d-flex justify-content-start">
+                                    <small>{{ $message }}</small>
+                                </div>
+                            @enderror
+                        </div>
                         <div class="form-group">
                             <label for="formFile" class="form-label">Foto Kuru</label>
                             <img class="img-preview img-fluid mb-3 col-sm-5">
                             <input class="form-control" type="file" id="foto_kru" name="foto_kru"
                                 onchange="previewImage()">
                         </div>
+                        @error('foto_kru')
+                            <div class="invalid-feedback d-flex justify-content-start">
+                                <small>{{ $message }}</small>
+                            </div>
+                        @enderror
                         <div class="form-group">
                             <label for="Alamat_kru">Alamat</label>
                             <input type="text" name="alamat_kru"
                                 class="@error('alamat_kru') is-invalid @enderror form-control" id="Alamat_kru"
-                                placeholder="Nama" value="{{ old('alamat_kru') }}">
+                                placeholder="Alamat" value="{{ old('alamat_kru') }}">
                             @error('alamat_kru')
                                 <div class="invalid-feedback d-flex justify-content-start">
                                     <small>{{ $message }}</small>
@@ -197,12 +310,7 @@
                 confirmButtonText: 'Ya, Hapus Sekarang!'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    Swal.fire(
-                            'Terhapus!',
-                            'File Sukses Terhapus.',
-                            'success'
-                        ),
-                        form.submit();
+                    form.submit();
                 }
             })
         });
