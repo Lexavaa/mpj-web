@@ -34,8 +34,8 @@
                                 class="@error('users_id') is-invalid @enderror form-control" id="users_id"
                                 placeholder="Nama" value="{{ auth()->user()->id }}">
                             <div class="mb-3">
-                                <label for="formFile" class="form-label @error('foto_kru') is-invalid @enderror">Upload
-                                    Gambar</label>
+                                <label for="formFile" class="form-label @error('foto_kru') is-invalid @enderror">Foto
+                                    Kru</label>
                                 <input type="hidden" name="oldImage" value="{{ $crews->foto_kru }}">
                                 @if ($crews->foto_kru)
                                     <img src="{{ asset('storage/' . $crews->foto_kru) }}"
@@ -138,7 +138,7 @@
                 <div class="card-body">
                     <h4 class="card-title">{{ $title }} TABLE</h4>
                     <p class="card-description">
-                        Add <code>Regional</code>
+                        Add <code>Crew</code>
                     </p>
                     <div class="table-responsive">
                         <table class="table table-hover">
@@ -197,7 +197,7 @@
                 <div class="card-body">
                     <h4 class="card-title">{{ $title }} FORM</h4>
                     <p class="card-description">
-                        Make Regional
+                        Make Crew
                     </p>
                     <form class="forms-sample" method="POST" action="/crew" enctype="multipart/form-data">
                         @csrf
@@ -213,7 +213,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="formFile" class="form-label">Foto Kuru</label>
+                            <label for="formFile" class="form-label">Foto Kru</label>
                             <img class="img-preview img-fluid mb-3 col-sm-5">
                             <input class="form-control" type="file" id="foto_kru" name="foto_kru"
                                 onchange="previewImage()">

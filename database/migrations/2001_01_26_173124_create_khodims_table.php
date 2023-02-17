@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('khodims', function (Blueprint $table) {
             $table->id();
-            $table->string('kode');
+            $table->string('nomor_id');
             $table->string('role');
             $table->timestamps();
         });

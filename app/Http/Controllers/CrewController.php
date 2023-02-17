@@ -19,7 +19,7 @@ class CrewController extends Controller
             'title' => 'Crew',
             'notif' => Profile::where('jumlah_santri', null)->orWhere('nama_media', null)->count(),
             'profile_check' => Profile::where('users_id', auth()->user()->id)->with(['user', 'regional'])->get(),
-            'crew' => Crew::latest()->with('users')->get(),
+            'crew' => Crew::where('users_id', auth()->user()->id)->latest()->with('users')->get(),
             'regional' => Regional::latest()->get(),
         ]);
     }
@@ -50,13 +50,13 @@ class CrewController extends Controller
     public function update(Request $request, $id)
     {
         $crew = Crew::find($id);
-        $rules =[
+        $rules = [
             'users_id' => 'required',
-            'foto_kru' => 'required|image|file|max:1000',
-            'alamat_kru' => 'required',
             'nama_kru' => 'required',
-            'nomor_wa_kru' => 'required|numeric|min:12|unique:crews',
-            'email_kru' => 'required|email|unique:crews',
+            'foto_kru' => 'image|file|max:1000',
+            'alamat_kru' => 'required',
+            'nomor_wa_kru' => 'required|numeric|min:12',
+            'email_kru' => 'required|email',
             'jabatan_kru' => 'required',
             'keahlian_kru' => 'required',
             'status_kru' => 'required',
@@ -64,17 +64,18 @@ class CrewController extends Controller
 
         $validatedData = $request->validate($rules);
 
-        if($request->file('image')){
-            if($request->oldImage){
+        $validatedData['users_id'] = auth()->user()->id;
+        if ($request->file('foto_kru')) {
+            if ($request->oldImage) {
                 Storage::delete($request->oldImage);
             }
-            $validatedData['image'] = $request->file('image')->store('crew-images');
+            $validatedData['foto_kru'] = $request->file('foto_kru')->store('crew-images');
         }
 
         Crew::where('id', $crew->id)
             ->update($validatedData);
 
-        return redirect()->back()->with('success','Crew Baru Telah Di Update !');
+        return redirect()->back()->with('success', 'Crew Baru Telah Di Update !');
     }
 
     public function destroy($id)

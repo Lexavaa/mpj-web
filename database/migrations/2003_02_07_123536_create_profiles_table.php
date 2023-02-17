@@ -27,33 +27,27 @@ return new class extends Migration
             $table->string('jabatan_pendaftar')->nullable();
             $table->string('nomor_wa')->nullable();
             $table->string('nama_media')->nullable();
-            $table->string('nomor_telegram')->nullable();
             $table->string('instagram')->nullable();
             $table->string('tiktok')->nullable();
             $table->string('youtube')->nullable();
             $table->string('facebook')->nullable();
             $table->string('twitter')->nullable();
             $table->string('website')->nullable();
-            $table->string('link_tiktok')->nullable();
-            $table->string('link_youtube')->nullable();
-            $table->string('link_instagram')->nullable();
-            $table->string('link_facebook')->nullable();
-            $table->string('link_twitter')->nullable();
-            $table->string('link_website')->nullable();
             $table->string('link_map')->nullable();
             $table->string('logo_ponpes')->nullable()->default('logo-pesantren/default.jpg');
             $table->string('logo_media')->nullable();
             $table->string('foto_gedung')->nullable();
             $table->string('foto_pengasuh')->nullable();
             $table->string('foto_kegiatan')->nullable();
-            $table->string('sejarah_pesantren', 500)->nullable();
+            $table->text('sejarah_pesantren')->nullable();
+            $table->string('program_pesantren')->nullable();
             $table->string('quote_pengasuh')->nullable();
-            $table->string('link_audio_dawuh')->nullable();
             $table->string('jumlah_santri')->nullable();
+            $table->string('status_bayar')->nullable();
             $table->timestamps();
         });
     }
-
+    
     /**
      * Reverse the migrations.
      *

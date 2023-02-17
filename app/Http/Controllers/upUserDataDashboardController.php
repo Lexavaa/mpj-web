@@ -11,30 +11,25 @@ class upUserDataDashboardController extends Controller
     {
         $validatedData = $request->validate([
             'nama_media' => 'required|unique:profiles',
-            'nomor_telegram' => 'required|unique:profiles|numeric',
             'instagram' => 'required|unique:profiles',
             'tiktok' => 'required|unique:profiles',
             'youtube' => 'required|unique:profiles',
             'facebook' => 'required|unique:profiles',
             'twitter' => 'required|unique:profiles',
             'website' => 'required|unique:profiles',
-            'link_tiktok' => 'required|unique:profiles',
-            'link_youtube' => 'required|unique:profiles',
-            'link_instagram' => 'required|unique:profiles',
-            'link_facebook' => 'required|unique:profiles',
-            'link_twitter' => 'required|unique:profiles',
-            'link_website' => 'required|unique:profiles',
             'link_map' => 'required|unique:profiles',
             'logo_ponpes' => 'required|image|file|mimes:jpeg,jpg,png|max:1024',
             'logo_media' => 'required|image|file|mimes:jpeg,jpg,png|max:1024',
             'foto_gedung' => 'required|image|file|mimes:jpeg,jpg,png|max:2048',
             'foto_pengasuh' => 'required|image|file|mimes:jpeg,jpg,png|max:2048',
             'foto_kegiatan' => 'required|image|file|mimes:jpeg,jpg,png|max:2048',
-            'sejarah_pesantren' => 'required|min:200|max:500',
+            'sejarah_pesantren' => 'required|min:100|max:1000',
+            'program_pesantren' => 'required',
             'quote_pengasuh' => 'required',
-            'link_audio_dawuh' => 'required',
             'jumlah_santri' => 'required|numeric',
         ]);
+
+        $validatedData['status_bayar'] = false;
 
         if ($request->file('logo_ponpes')) {
             $validatedData['logo_ponpes'] = $request->file('logo_ponpes')->store('logo-pesantren');
