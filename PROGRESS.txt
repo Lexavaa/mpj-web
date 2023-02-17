@@ -16,3 +16,10 @@
 
 - FIXING DATABASE V.2 (Want Barcode)
 
+(Schedule 18/02/03)
+
+- Rapiin File
+- Repair All DATABASE
+- Rombak semua controller
+- Buat Page persetujuan Pay
+- Buat Page ferivikasi USER
