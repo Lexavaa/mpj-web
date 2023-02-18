@@ -18,7 +18,7 @@ class CrewController extends Controller
         return view('admin.page.crew', [
             'title' => 'Crew',
             'notif' => Profile::where('jumlah_santri', null)->orWhere('nama_media', null)->count(),
-            'profile_check' => Profile::where('users_id', auth()->user()->id)->with(['user', 'regional'])->get(),
+            'profile' => Profile::where('users_id', auth()->user()->id)->with(['user', 'regional'])->get(),
             'crew' => Crew::where('users_id', auth()->user()->id)->latest()->with('users')->get(),
             'regional' => Regional::latest()->get(),
         ]);
@@ -27,9 +27,9 @@ class CrewController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
+            'nama_kru' => 'required',
             'foto_kru' => 'required|image|file|max:1000',
             'alamat_kru' => 'required',
-            'nama_kru' => 'required',
             'nomor_wa_kru' => 'required|numeric|min:12|unique:crews',
             'email_kru' => 'required|email|unique:crews',
             'jabatan_kru' => 'required',
@@ -44,27 +44,25 @@ class CrewController extends Controller
         }
 
         Crew::create($validatedData);
-        return redirect()->back()->with('success', 'Crew Berhasil Ditambah !');
+        return redirect()->back()->with('success', 'Kru Berhasil Ditambahkan!');
     }
 
     public function update(Request $request, $id)
     {
         $crew = Crew::find($id);
-        $rules = [
-            'users_id' => 'required',
+        $validatedData = $request->validate([
             'nama_kru' => 'required',
-            'foto_kru' => 'image|file|max:1000',
+            'foto_kru' => 'required|image|file|max:1000',
             'alamat_kru' => 'required',
-            'nomor_wa_kru' => 'required|numeric|min:12',
-            'email_kru' => 'required|email',
+            'nomor_wa_kru' => 'required|numeric|min:12|unique:crews',
+            'email_kru' => 'required|email|unique:crews',
             'jabatan_kru' => 'required',
             'keahlian_kru' => 'required',
             'status_kru' => 'required',
-        ];
-
-        $validatedData = $request->validate($rules);
+        ]);
 
         $validatedData['users_id'] = auth()->user()->id;
+    
         if ($request->file('foto_kru')) {
             if ($request->oldImage) {
                 Storage::delete($request->oldImage);
@@ -75,12 +73,13 @@ class CrewController extends Controller
         Crew::where('id', $crew->id)
             ->update($validatedData);
 
-        return redirect()->back()->with('success', 'Crew Baru Telah Di Update !');
+        return redirect()->back()->with('success','Data Kru ' . $crew->nama_kru . ' Berhasil Di Update !');
     }
 
     public function destroy($id)
     {
         $crew = Crew::find($id);
+
         if ($crew->foto_kru !== null) {
             Storage::delete($crew->foto_kru);
             $crew->delete();
@@ -88,6 +87,6 @@ class CrewController extends Controller
             $crew->delete();
         }
 
-        return redirect()->back()->with('success', 'Crew Telah Di Hapus !');
+        return redirect()->back()->with('success', 'Data Kru ' . $crew->nama_kru . ' Berhasil Di Hapus !');
     }
 }

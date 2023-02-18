@@ -62,7 +62,7 @@ https://templatemo.com/tm-581-kind-heart-charity
                 </li>
                 <li class="nav-item">
                     <div class="pt-2 gradient-button">
-                        <a href="/form-mpj">Join Us!</a>
+                        <a href="/gabung-mpj">Join Us!</a>
                     </div>
                 </li>
                 {{-- <li class="item">

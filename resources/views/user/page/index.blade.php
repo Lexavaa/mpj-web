@@ -290,7 +290,7 @@
                         </div>
                     </div>
                     <div class="col-lg-7 col-12 mx-auto">
-                        <form class="custom-form contact-form" action="/form-mpj" method="POST" role="form">
+                        <form class="custom-form contact-form" action="/upload/data-user" method="POST" role="form">
                             @csrf
                             <h3 class="mb-4">Jadilah Khodim Militan.</h3>
                             <div class="row">

@@ -17,7 +17,7 @@ class RegionalController extends Controller
         return view('admin.page.regional', [
             'title' => 'Regional',
             'notif' => Profile::where('jumlah_santri', null)->orWhere('nama_media', null)->count(),
-            'profile_check' => Profile::where('users_id', auth()->user()->id)->with('regional')->get(),
+            'profile' => Profile::where('users_id', auth()->user()->id)->with('regional')->get(),
             'regional' => Regional::latest()->get()
         ]);
     }

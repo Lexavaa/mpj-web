@@ -23,3 +23,8 @@
 - Rombak semua controller
 - Buat Page persetujuan Pay
 - Buat Page ferivikasi USER
+
+🎶DONE
+
+- Page Kru
+-

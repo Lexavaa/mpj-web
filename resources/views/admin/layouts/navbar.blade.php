@@ -55,8 +55,8 @@
             @endif
             <li class="nav-item nav-profile dropdown">
                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                    @foreach ($profile_check as $profiles)
-                        <img src="{{ $profiles->logo_media }}" class="w-100" alt="profile" />
+                    @foreach ($profile as $profiles)
+                        <img src="{{ asset('storage/' . $profiles->logo_ponpes) }}" class="w-100" alt="profile" />
                     @endforeach
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">

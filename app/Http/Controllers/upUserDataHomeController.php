@@ -11,7 +11,7 @@ class upUserDataHomeController extends Controller
 {
     public function index()
     {
-        return view('user.page.join-us', [
+        return view('user.page.gabung-mpj', [
             'regional'  => Regional::latest()->get()
         ]);
     }

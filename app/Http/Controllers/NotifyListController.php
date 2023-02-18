@@ -11,8 +11,8 @@ class NotifyListController extends Controller
     {
         return view('admin.page.notify',[
             'title' => 'Notifikasi',
-            'profile' => Profile::latest()->with(['user', 'regional'])->get(),
-            'profile_check' => Profile::where('users_id', auth()->user()->id)->with('regional')->get(),
+            'profiles' => Profile::latest()->with(['user', 'regional'])->get(),
+            'profile' => Profile::where('users_id', auth()->user()->id)->with('regional')->get(),
         ]);
     }
 }
