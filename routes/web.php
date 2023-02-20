@@ -29,7 +29,7 @@ Route::post('/upload/data-user', [upUserDataHomeController::class,'store']);
  --------------------------------------------*/
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/checkacc', [LoginController::class, 'authanticate']);
-Route::get('/home', [DashboardController::class, 'success'])->middleware(['auth']);
+Route::get('/home', [DashboardController::class, 'success'])->middleware(['auth','isActive']);
 Route::post('/logout', [DashboardController::class, 'logout'])->middleware('auth');
 Route::get('/failed-session', [SomePageController::class, 'FailedSession']);
 
@@ -37,7 +37,7 @@ Route::get('/failed-session', [SomePageController::class, 'FailedSession']);
 /*------------------------------------------
 ✊Route Untuk Halaman Dashboard
  --------------------------------------------*/
-Route::patch('/upload/data-user/{id}', [upUserDataDashboardController::class, 'setor'])->middleware(['auth', 'anggota']);
-Route::get('/notify-list', [NotifyListController::class, 'index'])->middleware(['auth', 'admin']);
-Route::resource('/regional', RegionalController::class)->middleware(['auth', 'admin']);
+Route::patch('/upload/data-user/{id}', [upUserDataDashboardController::class, 'setor'])->middleware(['auth', 'isAnggota']);
+Route::get('/notify-list', [NotifyListController::class, 'index'])->middleware(['auth', 'isAdmin']);
+Route::resource('/regional', RegionalController::class)->middleware(['auth', 'isAdmin']);
 Route::resource('/crew', CrewController::class)->middleware(['auth']);

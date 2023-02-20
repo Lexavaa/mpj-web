@@ -17,7 +17,7 @@ class ActiveStatus
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check() && Auth::user()->khodim->role == 'ANGGOTA') {
+        if (Auth::check() && Auth::user()-> == 'ANGGOTA') {
             return $next($request);
         }
         return redirect('/failed-session')->with('failed','akses halaman ini ditutup untuk anda');
