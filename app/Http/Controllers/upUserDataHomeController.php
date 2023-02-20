@@ -46,6 +46,7 @@ class upUserDataHomeController extends Controller
         $dataProfile->alamat_lengkap = $data['alamat_lengkap'];
         $dataProfile->regionals_id = $data['regionals_id'];
         $dataProfile->users_id = $dataUser->id;
+        $dataProfile->status_bayar = 0;
         $dataProfile->jumlah_kru = $data['jumlah_kru'];
         $dataProfile->nama_pendaftar = $data['nama_pendaftar'];
         $dataProfile->jabatan_pendaftar = $data['jabatan_pendaftar'];

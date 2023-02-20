@@ -8,8 +8,8 @@
         @include('admin.page.admin')
     @elseif(auth()->user()->khodim->role !== 'ADMIN')
         {{-- ESPECIALLY USER ROLE --}}
-        @foreach ($profile_check as $profiles)
-            @if ($profiles->nama_media != null && $profiles->jumlah_santri != null)
+        @foreach ($profile as $profiles_row)
+            @if ($profiles_row->nama_media != null && $profiles_row->jumlah_santri != null)
                 {{-- ESPECIALLY USER ROLE IF NOT FILL COMPLETED FORM --}}
                 @include('admin.page.user-profile')
             @else

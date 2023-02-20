@@ -3,39 +3,37 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-lg-2">
-                    <img src="{{ asset('storage/' . $profiles->logo_ponpes) }}" alt=""
+                    <img src="{{ asset('storage/' . $profiles_row->logo_ponpes) }}" alt=""
                         style="border-radius: 23px;">
                 </div>
                 <div class="col-lg-4 align-self-center">
                     <div class="main-info header-text">
-                        <h4>{{ $profiles->nama_pesantren }} - {{ $profiles->regional->nama }}</h4>
-                        <p>{{ $profiles->alamat_lengkap }}</p>
+                        <h4>{{ $profiles_row->nama_pesantren }} - {{ $profiles_row->regional->nama }}</h4>
+                        <p>{{ $profiles_row->alamat_lengkap }}</p>
                         <br>
-                        <button onclick="window.location.href='{{ $profiles->link_instagram }}'"
-                            type="button" style="background-color:transparent; border:none; "
-                            data-toggle="tooltip" data-placement="top"
-                            title="{{ $profiles->instagram }}">
+                        <button onclick="window.location.href='{{ $profiles_row->link_instagram }}'" type="button"
+                            style="background-color:transparent; border:none; " data-toggle="tooltip"
+                            data-placement="top" title="{{ $profiles_row->instagram }}">
                             <span class="fa fa-instagram text-light m-2"></span>
                         </button>
-                        <button onclick="window.location.href='{{ $profiles->link_facebook }}'"
-                            type="button" style="background-color:transparent; border:none; "
-                            data-toggle="tooltip" data-placement="top"
-                            title="{{ $profiles->facebook }}">
+                        <button onclick="window.location.href='{{ $profiles_row->link_facebook }}'" type="button"
+                            style="background-color:transparent; border:none; " data-toggle="tooltip"
+                            data-placement="top" title="{{ $profiles_row->facebook }}">
                             <span class="fa fa-facebook text-primary m-2"></span>
                         </button>
-                        <button onclick="window.location.href='{{ $profiles->link_youtube }}'"
-                            type="button" style="background-color:transparent; border:none; "
-                            data-toggle="tooltip" data-placement="top" title="{{ $profiles->youtube }}">
+                        <button onclick="window.location.href='{{ $profiles_row->link_youtube }}'" type="button"
+                            style="background-color:transparent; border:none; " data-toggle="tooltip"
+                            data-placement="top" title="{{ $profiles_row->youtube }}">
                             <span class="fa fa-youtube text-danger m-2"></span>
                         </button>
-                        <button onclick="window.location.href='{{ $profiles->link_tiktok }}'"
-                            type="button" style="background-color:transparent; border:none; "
-                            data-toggle="tooltip" data-placement="top" title="{{ $profiles->tiktok }}">
+                        <button onclick="window.location.href='{{ $profiles_row->link_tiktok }}'" type="button"
+                            style="background-color:transparent; border:none; " data-toggle="tooltip"
+                            data-placement="top" title="{{ $profiles_row->tiktok }}">
                             <span class="fa-brands fa-tiktok text-light m-2"></span>
                         </button>
-                        <button onclick="window.location.href='{{ $profiles->link_website }}'"
-                            type="button" style="background-color:transparent; border:none; "
-                            data-toggle="tooltip" data-placement="top" title="{{ $profiles->website }}">
+                        <button onclick="window.location.href='{{ $profiles_row->link_website }}'" type="button"
+                            style="background-color:transparent; border:none; " data-toggle="tooltip"
+                            data-placement="top" title="{{ $profiles_row->website }}">
                             <span class="fa fa-globe text-light m-2"></span>
                         </button>
                     </div>
@@ -45,7 +43,7 @@
                         <div class="card">
                             <div class="card-body text-dark">
                                 <label>Sejarah Pesantren</label>
-                                <li>{{ $profiles->sejarah_pesantren }}</li>
+                                <li>{{ $profiles_row->sejarah_pesantren }}</li>
                             </div>
                         </div>
                     </ul>
@@ -62,16 +60,15 @@
                             <div class="col-lg-3 col-sm-6">
                                 <div class="item">
                                     <div class="thumb">
-                                        <img src="{{ asset('storage/' . $profiles->foto_pengasuh) }}"
+                                        <img src="{{ asset('storage/' . $profiles_row->foto_pengasuh) }}"
                                             alt="" style="border-radius: 23px;">
-                                        <button type="button"
-                                            style="border: none; background-color:transparent;"
+                                        <button type="button" style="border: none; background-color:transparent;"
                                             data-toggle="modal" data-target="#exampleModal">
                                             <a><i class="fa fa-quote-left"></i></a>
                                         </button>
                                     </div>
                                     <div class="down-content">
-                                        <h4>{{ $profiles->nama_pengasuh }}</h4>
+                                        <h4>{{ $profiles_row->nama_pengasuh }}</h4>
                                     </div>
                                 </div>
                             </div>
@@ -82,11 +79,11 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title text-dark" id="exampleModalLabel">
-                                                {{ $profiles->nama_pengasuh }} Said
+                                                {{ $profiles_row->nama_pengasuh }} Said
                                             </h5>
                                         </div>
                                         <div class="modal-body">
-                                            " {{ $profiles->quote_pengasuh }} "
+                                            " {{ $profiles_row->quote_pengasuh }} "
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
@@ -99,19 +96,19 @@
                             <div class="col-lg-3 col-sm-6">
                                 <div class="item">
                                     <div class="thumb">
-                                        <img src="{{ asset('storage/' . $profiles->logo_media) }}"
-                                            alt="" style="border-radius: 23px;">
+                                        <img src="{{ asset('storage/' . $profiles_row->logo_media) }}" alt=""
+                                            style="border-radius: 23px;">
                                     </div>
                                     <div class="down-content">
-                                        <h4>{{ $profiles->nama_media }}</h4>
+                                        <h4>{{ $profiles_row->nama_media }}</h4>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-sm-6">
                                 <div class="item">
                                     <div class="thumb">
-                                        <img src="{{ asset('storage/' . $profiles->foto_gedung) }}"
-                                            alt="" style="border-radius: 23px;">
+                                        <img src="{{ asset('storage/' . $profiles_row->foto_gedung) }}" alt=""
+                                            style="border-radius: 23px;">
                                     </div>
                                     <div class="down-content">
                                         <h4>Foto Gedung</h4>
@@ -121,7 +118,7 @@
                             <div class="col-lg-3 col-sm-6">
                                 <div class="item">
                                     <div class="thumb">
-                                        <img src="{{ asset('storage/' . $profiles->foto_kegiatan) }}"
+                                        <img src="{{ asset('storage/' . $profiles_row->foto_kegiatan) }}"
                                             alt="" style="border-radius: 23px;">
                                     </div>
                                     <div class="down-content">

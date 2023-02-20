@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('nomor_id_kru')->nullable();
             $table->string('nama_kru')->nullable();
-            $table->string('foto_kru')->nullable()->default('/logo-pesantren/default.jpg');
+            $table->string('foto_kru')->nullable()->default('/crew-images/default.jpg');
             $table->string('alamat_kru')->nullable();
             $table->string('nomor_wa_kru')->nullable();
             $table->string('email_kru')->nullable();

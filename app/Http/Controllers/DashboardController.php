@@ -24,9 +24,9 @@ class DashboardController extends Controller
             'active' => 'dashboard',
             'regional' => Regional::latest()->get(),
             'user' => User::latest()->with('khodim')->get(),
-            'profile' => Profile::latest()->with(['user', 'regional'])->get(),
-            'notif' => Profile::where('jumlah_santri', null)->orWhere('nama_media', null)->count(),
-            'profile_check' => Profile::where('users_id', auth()->user()->id)->with('regional')->get(),
+            'profiles' => Profile::latest()->with(['user', 'regional'])->get(),
+            'notif' => User::where('isActive', 0)->count(),
+            'profile' => Profile::where('users_id', auth()->user()->id)->with('regional')->get(),
             'khodim' => User::where('khodims_id', 1)->orWhere('khodims_id', 2)->orWhere('khodims_id', 3)->orWhere('khodims_id', 4)->count()
         ], compact(['data_jumlah_kru', 'month']));
     }

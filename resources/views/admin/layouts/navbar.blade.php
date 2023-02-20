@@ -11,33 +11,32 @@
         </button>
         <ul class="navbar-nav navbar-nav-right">
             @if (auth()->user()->khodim->role == 'ADMIN')
-                @if ($title != 'Notifikasi')
-                    <li class="nav-item dropdown">
-                        <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#"
-                            data-toggle="dropdown">
-                            <i class="fa-solid fa-bell mx-0"></i>
-                            @if ($notif)
-                                <span class="count"></span>
+            @if ($title != 'Notifikasi')
+                <li class="nav-item dropdown">
+                    <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#"
+                        data-toggle="dropdown">
+                        <i class="fa-solid fa-bell mx-0"></i>
+                        @if ($notif)
+                            <span class="count"></span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
+                        aria-labelledby="notificationDropdown">
+                        <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
+                        <a class="dropdown-item preview-item">
+                            <div class="preview-thumbnail">
+                                <div class="preview-icon bg-info">
+                                    <i class="ti-user mx-0"></i>
+                                </div>
+                            </div>
+                            <div class="preview-item-content" onclick="window.location.href='/notify-list'">
+                                <h6 class="preview-subject font-weight-normal text-dark">New user registration</h6>
+                                <p class="font-weight-light small-text mb-0 text-muted">
+                                    {{ $notif }}
+                                </p>
+                            </div>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
-                            aria-labelledby="notificationDropdown">
-                            <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <div class="preview-icon bg-info">
-                                        <i class="ti-user mx-0"></i>
-                                    </div>
-                                </div>
-                                <div class="preview-item-content" onclick="window.location.href='/notify-list'">
-                                    <h6 class="preview-subject font-weight-normal text-dark">New user registration</h6>
-                                    <p class="font-weight-light small-text mb-0 text-muted">
-                                        {{ $notif }}
-                                    </p>
-                                </div>
-                            </a>
-                        </div>
-                    </li>
-                @endif
+                    </div>
+                </li>
             @else
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
@@ -52,6 +51,7 @@
                 </div>
                 </li>
             @endif
+            @endif{{--  --}}
             @endif
             <li class="nav-item nav-profile dropdown">
                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">

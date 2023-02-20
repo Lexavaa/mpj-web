@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Profile, Crew, Regional};
+use App\Models\{Profile, Crew, Regional, User};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -17,7 +17,7 @@ class CrewController extends Controller
     {
         return view('admin.page.crew', [
             'title' => 'Crew',
-            'notif' => Profile::where('jumlah_santri', null)->orWhere('nama_media', null)->count(),
+            'notif' => User::where('isActive', 0)->count(),
             'profile' => Profile::where('users_id', auth()->user()->id)->with(['user', 'regional'])->get(),
             'crew' => Crew::where('users_id', auth()->user()->id)->latest()->with('users')->get(),
             'regional' => Regional::latest()->get(),
@@ -62,7 +62,7 @@ class CrewController extends Controller
         ]);
 
         $validatedData['users_id'] = auth()->user()->id;
-    
+
         if ($request->file('foto_kru')) {
             if ($request->oldImage) {
                 Storage::delete($request->oldImage);
@@ -73,7 +73,7 @@ class CrewController extends Controller
         Crew::where('id', $crew->id)
             ->update($validatedData);
 
-        return redirect()->back()->with('success','Data Kru ' . $crew->nama_kru . ' Berhasil Di Update !');
+        return redirect()->back()->with('success', 'Data Kru ' . $crew->nama_kru . ' Berhasil Di Update !');
     }
 
     public function destroy($id)

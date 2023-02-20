@@ -25,6 +25,18 @@
             </div>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="/pay-in">
+                <i class="fa fa-money-bill-1-wave menu-icon"></i>
+                <span class="menu-title">Bayar Iuran</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/pay-out">
+                <i class="fa fa-money-bill-1-wave menu-icon"></i>
+                <span class="menu-title">Lihat Iuran</span>
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="/crew">
                 <i class="fa fa-users menu-icon"></i>
                 <span class="menu-title">Tambah Kru</span>

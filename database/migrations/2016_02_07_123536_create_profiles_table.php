@@ -43,11 +43,12 @@ return new class extends Migration
             $table->string('program_pesantren')->nullable();
             $table->string('quote_pengasuh')->nullable();
             $table->string('jumlah_santri')->nullable();
-            $table->string('status_bayar')->nullable();
+            $table->boolean('status_bayar')->default(0);
+            $table->string('bukti_tf')->nullable()->default('bukti-transfer/default.jpg');
             $table->timestamps();
         });
     }
-    
+
     /**
      * Reverse the migrations.
      *

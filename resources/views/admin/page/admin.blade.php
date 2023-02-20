@@ -30,7 +30,7 @@
         <div class="card" style="background-color:#208321; color:#fff;">
             <div class="card-body">
                 <h6 class="mb-4" style="font-size:20px; ">Jumlah Kru Media</h6>
-                <p class="fs-30 mb-4" style="font-size:35px;">{{ $profile->sum('jumlah_kru') }}</p>
+                <p class="fs-30 mb-4" style="font-size:35px;">{{ $profiles->sum('jumlah_kru') }}</p>
                 <p>Dari semua media yang bergabung</p>
             </div>
         </div>
@@ -75,10 +75,9 @@
                                                         <td class="text-muted">Illinois</td>
                                                         <td class="w-100 px-0">
                                                             <div class="progress progress-md mx-4">
-                                                                <div class="progress-bar bg-primary"
-                                                                    role="progressbar" style="width: 70%"
-                                                                    aria-valuenow="70" aria-valuemin="0"
-                                                                    aria-valuemax="100"></div>
+                                                                <div class="progress-bar bg-primary" role="progressbar"
+                                                                    style="width: 70%" aria-valuenow="70"
+                                                                    aria-valuemin="0" aria-valuemax="100"></div>
                                                             </div>
                                                         </td>
                                                         <td>
@@ -89,10 +88,9 @@
                                                         <td class="text-muted">Washington</td>
                                                         <td class="w-100 px-0">
                                                             <div class="progress progress-md mx-4">
-                                                                <div class="progress-bar bg-warning"
-                                                                    role="progressbar" style="width: 30%"
-                                                                    aria-valuenow="30" aria-valuemin="0"
-                                                                    aria-valuemax="100"></div>
+                                                                <div class="progress-bar bg-warning" role="progressbar"
+                                                                    style="width: 30%" aria-valuenow="30"
+                                                                    aria-valuemin="0" aria-valuemax="100"></div>
                                                             </div>
                                                         </td>
                                                         <td>
@@ -103,10 +101,9 @@
                                                         <td class="text-muted">Mississippi</td>
                                                         <td class="w-100 px-0">
                                                             <div class="progress progress-md mx-4">
-                                                                <div class="progress-bar bg-danger"
-                                                                    role="progressbar" style="width: 95%"
-                                                                    aria-valuenow="95" aria-valuemin="0"
-                                                                    aria-valuemax="100"></div>
+                                                                <div class="progress-bar bg-danger" role="progressbar"
+                                                                    style="width: 95%" aria-valuenow="95"
+                                                                    aria-valuemin="0" aria-valuemax="100"></div>
                                                             </div>
                                                         </td>
                                                         <td>

@@ -17,7 +17,7 @@ class ActiveStatus
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check() && Auth::user()->khodim->role == 'ANGGOTA') {
+        if (Auth::check() && Auth::user()->isActive == '1') {
             return $next($request);
         }
         return redirect('/failed-account')->with('failed', 'Akun Anda Belum Di Ferivikasi');

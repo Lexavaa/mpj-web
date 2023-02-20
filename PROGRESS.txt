@@ -27,4 +27,9 @@
 🎶DONE
 
 - Page Kru
--
+- ferivikasi User
+- Rombak Controllers
+- Repair DATABASE- i
+- Payment System
+= ferivikasi user 
+- middleware Rapi

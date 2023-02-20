@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->unsignedBigInteger('khodims_id');
             $table->foreign('khodims_id')->references('id')->on('khodims')->onDelete('cascade');
-            $table->boolean('isActive')->default('0');
+            $table->boolean('isActive')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

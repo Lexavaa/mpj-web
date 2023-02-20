@@ -23,13 +23,13 @@ class upUserDataDashboardController extends Controller
             'foto_gedung' => 'required|image|file|mimes:jpeg,jpg,png|max:2048',
             'foto_pengasuh' => 'required|image|file|mimes:jpeg,jpg,png|max:2048',
             'foto_kegiatan' => 'required|image|file|mimes:jpeg,jpg,png|max:2048',
-            'sejarah_pesantren' => 'required|min:100|max:1000',
-            'program_pesantren' => 'required',
+            'sejarah_pesantren' => 'required|min:100|max:500',
+            'program_pesantren' => 'required|min:20|max:100',
             'quote_pengasuh' => 'required',
             'jumlah_santri' => 'required|numeric',
         ]);
 
-        $validatedData['status_bayar'] = false;
+        $validatedData['status_bayar'] = 0;
 
         if ($request->file('logo_ponpes')) {
             $validatedData['logo_ponpes'] = $request->file('logo_ponpes')->store('logo-pesantren');

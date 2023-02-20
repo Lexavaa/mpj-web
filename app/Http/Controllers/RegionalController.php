@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Profile,Regional};
+use App\Models\{Profile,Regional, User};
 use Illuminate\Http\Request;
 
 class RegionalController extends Controller
@@ -16,7 +16,7 @@ class RegionalController extends Controller
     {
         return view('admin.page.regional', [
             'title' => 'Regional',
-            'notif' => Profile::where('jumlah_santri', null)->orWhere('nama_media', null)->count(),
+            'notif' => User::where('isActive', 0)->count(),
             'profile' => Profile::where('users_id', auth()->user()->id)->with('regional')->get(),
             'regional' => Regional::latest()->get()
         ]);
