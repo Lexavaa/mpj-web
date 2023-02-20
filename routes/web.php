@@ -12,7 +12,7 @@ use App\Http\Controllers\upUserDataDashboardController;
 use App\Http\Controllers\upUserDataHomeController;
 
 
-/*------------------------------------------- 
+/*-------------------------------------------
 ✊Route Untuk Halaman Index -- Tampilan User
  Seluruh route area "wajib" Diletakkkan pada groupnya
  agar memudahkan READ CODE & DEVELOPING UNTUK
@@ -32,6 +32,7 @@ Route::post('/checkacc', [LoginController::class, 'authanticate']);
 Route::get('/home', [DashboardController::class, 'success'])->middleware(['auth','isActive']);
 Route::post('/logout', [DashboardController::class, 'logout'])->middleware('auth');
 Route::get('/failed-session', [SomePageController::class, 'FailedSession']);
+Route::get('/failed-account', [SomePageController::class, 'FailedAccount']);
 
 
 /*------------------------------------------

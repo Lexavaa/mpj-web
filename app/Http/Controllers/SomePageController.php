@@ -12,4 +12,11 @@ class SomePageController extends Controller
             'title' => 'AKSES DITUTUP!'
         ]);
     }
+
+    public function FailedAccount()
+    {
+        return view('admin.page.failedaccount',[
+            'title' => 'AKUN BELUM DI FERIVIKASI!'
+        ]);
+    }
 }
