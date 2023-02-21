@@ -44,7 +44,7 @@ class PaymentController extends Controller
         return redirect()->back()->with('success', 'Hasil Dari Bukti Akan Kami Tindak Secepatnya');
     }
 
-    public function failed(Request $request, $id)
+    public function failed($id)
     {
         $user = Profile::find($id);
 
@@ -55,5 +55,15 @@ class PaymentController extends Controller
             ->update($validatedData);
 
         return redirect()->back()->with('success', 'Data Terganti!');
+    }
+
+    public function success($id)
+    {
+        $validatedData['status_bayar'] = 1;
+
+        Profile::where('id', $id)
+            ->update($validatedData);
+
+        return redirect()->back()->with('success', 'User Dikonfirmasi');
     }
 }

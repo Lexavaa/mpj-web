@@ -31,7 +31,7 @@
                                                 @method('PATCH')
                                                 @csrf
                                                 <div class="m-3">
-                                                    <button class="badge bg-success" type="submit"
+                                                    <button class="badge bg-success show-alert" type="submit"
                                                         style="border-radius:8px; border:none;">
                                                         Verified He <i class="fa-solid fa-stamp"
                                                             style="color:#242424;"></i></button>
@@ -47,4 +47,24 @@
             </div>
         </div>
     </div>
+    <script src="{{ asset('dashboard/js/jquery.3.2.1.min.js') }}"></script>
+    <script>
+        $('.show-alert').click(function(event) {
+            var form = $(this).closest("form");
+            event.preventDefault();
+            Swal.fire({
+                title: 'Ferivikasi User?',
+                text: "user dapat otomatis login ke dashboard!",
+                icon: 'success',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, setuju!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit();
+                }
+            })
+        });
+    </script>
 @endsection

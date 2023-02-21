@@ -51,5 +51,6 @@ Route::group(['middleware' => ['isActive', 'auth']], function () {
     Route::get('/pay-in', [PaymentController::class, 'index'])->middleware('isAnggota');
     Route::get('/pay-out', [PaymentController::class, 'index_admin'])->middleware('isAdmin');
     Route::patch('/failed-transaction/{id}', [PaymentController::class, 'failed'])->middleware('isAdmin');
+    Route::patch('/success-transaction/{id}', [PaymentController::class, 'success'])->middleware('isAdmin');
     Route::patch('/payment/user/{id}', [PaymentController::class, 'store'])->middleware('isAnggota');
 });

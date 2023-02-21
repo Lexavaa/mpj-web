@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="container">
-                @foreach ($profiles as $profiles_row)
+                @foreach ($profile as $profiles_row)
                     @if ($profiles_row->bukti_tf != 'bukti-transfer/default.jpg')
                         <div class="card m-3">
                             <div class="card-content m-3">
