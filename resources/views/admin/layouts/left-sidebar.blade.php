@@ -14,11 +14,15 @@
             </a>
             <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Media Pesantren</a>
+                    <li class="nav-item"> <a class="nav-link {{ $title == 'Data' ? 'text-dark font-weight-bold' : '' }}"
+                            href="/data/media">Data Media</a>
                     </li>
-                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Data Lengkap
+                    <li class="nav-item"> <a
+                            class="nav-link {{ $title == 'Data Lengkap Media' ? 'text-dark font-weight-bold' : '' }}"
+                            href="/data-lengkap/media">Data Lengkap
                             Media</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Data Kru
+                    <li class="nav-item"> <a class="nav-link {{ $title == 'Crew' ? 'text-dark font-weight-bold' : '' }}"
+                            href="/crew">Data Kru
                             Media</a>
                     </li>
                 </ul>
@@ -34,12 +38,6 @@
             <a class="nav-link" href="/pay-out">
                 <i class="fa fa-money-bill-1-wave menu-icon"></i>
                 <span class="menu-title">Lihat Iuran</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/crew">
-                <i class="fa fa-users menu-icon"></i>
-                <span class="menu-title">Tambah Kru</span>
             </a>
         </li>
         <li class="nav-item">

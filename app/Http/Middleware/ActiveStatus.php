@@ -20,6 +20,6 @@ class ActiveStatus
         if (Auth::check() && Auth::user()->isActive == '1') {
             return $next($request);
         }
-        return redirect('/failed-account')->with('failed', 'Akun Anda Belum Di Ferivikasi');
+        return redirect()->back()->with('failed', 'Akun Anda Belum Di Ferivikasi');
     }
 }

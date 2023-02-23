@@ -8,7 +8,6 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\NotifyListController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\RegionalController;
-use App\Http\Controllers\SomePageController;
 use App\Http\Controllers\upUserDataDashboardController;
 use App\Http\Controllers\upUserDataHomeController;
 
@@ -30,8 +29,6 @@ Route::post('/upload/data-user', [upUserDataHomeController::class, 'store']);
  --------------------------------------------*/
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/checkacc', [LoginController::class, 'authanticate']);
-Route::get('/failed-session', [SomePageController::class, 'FailedSession']);
-Route::get('/failed-account', [SomePageController::class, 'FailedAccount']);
 
 
 /*------------------------------------------
@@ -48,6 +45,8 @@ Route::group(['middleware' => ['isActive', 'auth']], function () {
     Route::patch('/upload/data-user/{id}', [upUserDataDashboardController::class, 'setor'])->middleware('isAnggota');
     Route::resource('/regional', RegionalController::class)->middleware(['isAdmin']);
     Route::resource('/crew', CrewController::class)->middleware('isAnggota');
+    Route::get('/data/media', [DashboardController::class,'media'])->middleware('isAnggota');
+    Route::get('/data-lengkap/media', [DashboardController::class,'media_completed'])->middleware('isAnggota');
     Route::get('/pay-in', [PaymentController::class, 'index'])->middleware('isAnggota');
     Route::get('/pay-out', [PaymentController::class, 'index_admin'])->middleware('isAdmin');
     Route::patch('/failed-transaction/{id}', [PaymentController::class, 'failed'])->middleware('isAdmin');

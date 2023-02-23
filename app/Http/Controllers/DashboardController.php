@@ -38,4 +38,25 @@ class DashboardController extends Controller
         $request->session()->regenerateToken();
         return redirect('/login');
     }
+
+    public function media()
+    {
+        return view('admin.page.datamedia', [
+            'title'  => 'Data',
+            'profiles' => Profile::latest()->with(['user', 'regional'])->get(),
+            'user' => User::latest()->get(),
+            'profile' => Profile::where('users_id', auth()->user()->id)->with('regional')->get(),
+            'regional'  => Regional::latest()->get()
+        ]);
+    }
+
+    public function media_completed()
+    {
+        return view('admin.page.datalengkapmedia', [
+            'title'  => 'Data Lengkap Media',
+            'profiles' => Profile::latest()->with(['user', 'regional'])->get(),
+            'profile' => Profile::where('users_id', auth()->user()->id)->with('regional')->get(),
+            'regional'  => Regional::latest()->get()
+        ]);
+    }
 }

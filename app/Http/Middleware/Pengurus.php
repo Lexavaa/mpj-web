@@ -20,6 +20,6 @@ class Pengurus
         if (Auth::check() && Auth::user()->khodim->role == 'PENGURUS') {
             return $next($request);
         }
-        return redirect('/failed-session')->with('failed','akses halaman ini ditutup untuk anda');
+        return redirect()->back()->with('failed','akses halaman ini ditutup untuk anda');
     }
 }

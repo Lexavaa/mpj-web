@@ -1,21 +1,61 @@
-@if(session()->has('success'))
-<script>
-Swal.fire({
-  position: 'top-end',
-  icon: 'success',
-  title: '{{ session('success') }}',
-  showConfirmButton: false,
-  timer: 1500
-})
-</script>
+@if (session()->has('success'))
+    <script>
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+
+        Toast.fire({
+            icon: 'success',
+            title: '{{ session('success') }}'
+        })
+    </script>
 @elseif(session()->has('failed'))
-<script>
-Swal.fire({
-  position: 'top-end',
-  icon: 'warning',
-  title: '{{ session('failed') }}',
-  showConfirmButton: false,
-  timer: 1500
-})
-</script>
+    <script>
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+
+        Toast.fire({
+            icon: 'warning',
+            title: '{{ session('failed') }}'
+        })
+    </script>
 @endif
+
+
+<script>
+    function permanent() {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'center',
+            showConfirmButton: false,
+            timer: 500,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+
+        Toast.fire({
+            icon: 'error',
+            title: 'PERMANENT! HUBUNGI ADMIN'
+        })
+    }
+</script>
